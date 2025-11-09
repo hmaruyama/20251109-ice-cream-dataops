@@ -30,6 +30,14 @@ built_resources:
       hash: c3b48e03
     kind: Group
     destination: build/auth/3.data_pipeline_oee.Group.yaml
+  extraction_pipelines:
+  - identifier:
+      externalId: ep_icapi_datapoints
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/extraction_pipelines/ep_icapi_datapoints.ExtractionPipeline.yaml
+      hash: 1a1814d6
+    kind: ExtractionPipeline
+    destination: build/extraction_pipelines/1.ep_icapi_datapoints.ExtractionPipeline.yaml
   data_models:
   - identifier:
       space: icapi_dm_space
@@ -130,7 +138,45 @@ built_resources:
       hash: ad7e9d3f
     kind: Source
     destination: build/hosted_extractors/7.Source.yaml
-  functions: []
+  functions:
+  - identifier:
+      externalId: icapi_datapoints_extractor
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/functions/functions.Function.yaml
+      hash: 4fcaffc5
+    kind: Function
+    destination: build/functions/1.functions.Function.yaml
+  - identifier:
+      functionExternalId: icapi_datapoints_extractor
+      name: Frontfill every 10 minutes for the last hour of data (streamer)
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/functions/schedules.Schedule.yaml
+      hash: 715fa105
+    kind: Schedule
+    destination: build/functions/2.schedules.Schedule.yaml
+  - identifier:
+      functionExternalId: icapi_datapoints_extractor
+      name: Backfill all sites once a day for the last 5 days (gap filling)
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/functions/schedules.Schedule.yaml
+      hash: 715fa105
+    kind: Schedule
+    destination: build/functions/2.schedules.Schedule.yaml
+  - identifier:
+      externalId: oee_timeseries
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/use_cases/oee/functions/functions.Function.yaml
+      hash: b4795e39
+    kind: Function
+    destination: build/functions/3.functions.Function.yaml
+  - identifier:
+      functionExternalId: oee_timeseries
+      name: Run calculations every 5 minutes for last hour of data
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/use_cases/oee/functions/schedules.Schedule.yaml
+      hash: 0cc26f4c
+    kind: Schedule
+    destination: build/functions/4.schedules.Schedule.yaml
   data_sets:
   - identifier:
       externalId: ds_icapi
@@ -168,16 +214,17 @@ read_modules:
   - auth
 - dir: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api
   resource_directories:
-  - auth
-  - functions
-  - transformations
-  - hosted_extractors
-  - raw
+  - extraction_pipelines
   - data_models
   - data_sets
+  - auth
+  - raw
+  - transformations
+  - functions
+  - hosted_extractors
 - dir: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/use_cases/oee
   resource_directories:
-  - data_models
   - functions
+  - data_models
   - data_sets
   - auth
