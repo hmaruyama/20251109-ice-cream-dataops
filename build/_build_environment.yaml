@@ -81,6 +81,29 @@ built_resources:
       hash: 40c3a577
     kind: Schedule
     destination: build/transformations/5.create_asset_hierarchy.schedule.yaml
+  workflows:
+  - identifier:
+      externalId: wf_icapi_data_pipeline
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/workflows/wf_icapi_data_pipeline.WorkFlow.yaml
+      hash: 9bc66394
+    kind: Workflow
+    destination: build/workflows/1.wf_icapi_data_pipeline.WorkFlow.yaml
+  - identifier:
+      externalId: icapi_trigger
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/workflows/wf_icapi_data_pipeline.WorkFlowTrigger.yaml
+      hash: 4bb02ead
+    kind: WorkflowTrigger
+    destination: build/workflows/2.wf_icapi_data_pipeline.WorkFlowTrigger.yaml
+  - identifier:
+      workflowExternalId: wf_icapi_data_pipeline
+      version: '1'
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/workflows/wf_icapi_data_pipeline.WorkflowVersion.yaml
+      hash: d4e083a6
+    kind: WorkflowVersion
+    destination: build/workflows/3.wf_icapi_data_pipeline.WorkflowVersion.yaml
   hosted_extractors:
   - identifier:
       externalId: ICAPI Time series
@@ -215,16 +238,17 @@ read_modules:
 - dir: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api
   resource_directories:
   - extraction_pipelines
-  - data_models
-  - data_sets
-  - auth
   - raw
-  - transformations
+  - workflows
   - functions
+  - auth
+  - data_models
+  - transformations
   - hosted_extractors
+  - data_sets
 - dir: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/use_cases/oee
   resource_directories:
-  - functions
-  - data_models
   - data_sets
+  - functions
   - auth
+  - data_models
