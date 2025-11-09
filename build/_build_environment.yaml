@@ -45,6 +45,63 @@ built_resources:
       hash: 4424ed7c
     kind: Space
     destination: build/data_models/2.oee_timeseries.space.yaml
+  hosted_extractors:
+  - identifier:
+      externalId: ICAPI Time series
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/hosted_extractors/Ice
+        Cream Factory API/timeseries/Destination.yaml
+      hash: d20cbd53
+    kind: Destination
+    destination: build/hosted_extractors/1.Destination.yaml
+  - identifier:
+      externalId: ICAPI Assets
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/hosted_extractors/Ice
+        Cream Factory API/assets/Destination.yaml
+      hash: fb8d3d88
+    kind: Destination
+    destination: build/hosted_extractors/2.Destination.yaml
+  - identifier:
+      externalId: ICAPI Time series
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/hosted_extractors/Ice
+        Cream Factory API/timeseries/Job.yaml
+      hash: 0226bde2
+    kind: Job
+    destination: build/hosted_extractors/3.Job.yaml
+  - identifier:
+      externalId: ICAPI Assets
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/hosted_extractors/Ice
+        Cream Factory API/assets/Job.yaml
+      hash: 3ffbe134
+    kind: Job
+    destination: build/hosted_extractors/4.Job.yaml
+  - identifier:
+      externalId: ICAPI Time series
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/hosted_extractors/Ice
+        Cream Factory API/timeseries/Mapping.yaml
+      hash: aaf9f5e1
+    kind: Mapping
+    destination: build/hosted_extractors/5.Mapping.yaml
+  - identifier:
+      externalId: ICAPI Assets
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/hosted_extractors/Ice
+        Cream Factory API/assets/Mapping.yaml
+      hash: 822163e4
+    kind: Mapping
+    destination: build/hosted_extractors/6.Mapping.yaml
+  - identifier:
+      externalId: Ice Cream Factory API
+    source:
+      path: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api/hosted_extractors/Ice
+        Cream Factory API/Source.yaml
+      hash: ad7e9d3f
+    kind: Source
+    destination: build/hosted_extractors/7.Source.yaml
   functions: []
   data_sets:
   - identifier:
@@ -83,14 +140,15 @@ read_modules:
   - auth
 - dir: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/ice_cream_api
   resource_directories:
+  - auth
+  - hosted_extractors
   - data_models
   - raw
-  - data_sets
   - functions
-  - auth
+  - data_sets
 - dir: /Users/hikarumaruyama/src/github.com/hmaruyama/20251109-ice-cream-dataops/ice-cream-dataops/modules/bootcamp/use_cases/oee
   resource_directories:
-  - data_sets
-  - functions
-  - data_models
   - auth
+  - functions
+  - data_sets
+  - data_models
